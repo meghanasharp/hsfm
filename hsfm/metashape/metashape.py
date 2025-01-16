@@ -237,15 +237,15 @@ def images2las(project_name,
 
     chunk.buildDepthMaps(downscale=densecloud_quality,
                          filter_mode=Metashape.AggressiveFiltering)
-    chunk.buildDenseCloud()
+    chunk.buildPointCloud()
     doc.save()
     
     # EXPORT
     
     chunk.exportReport(report_file)
     if export_point_cloud:
-        chunk.exportPoints(path=point_cloud_file,
-                           format=Metashape.PointsFormatLAS, 
+        chunk.exportPointCloud(path=point_cloud_file,
+                           format=Metashape.PointCloudFormatLAS, 
                            crs=chunk.crs)
 
     return metashape_project_file, point_cloud_file
@@ -268,7 +268,7 @@ def oc32dem(project_name,
 
     chunk = doc.chunk
 
-    chunk.buildDem(source_data=Metashape.DenseCloudData, 
+    chunk.buildDem(source_data=Metashape.PointCloudData, 
                    interpolation=Metashape.DisabledInterpolation)
 
     doc.save()
@@ -322,7 +322,7 @@ def images2ortho(project_file,
     chunk = doc.chunk
     
     if build_dem:
-        chunk.buildDem(source_data=Metashape.DenseCloudData)
+        chunk.buildDem(source_data=Metashape.PointCloudData)
     
     if build_ortho:
         chunk.buildOrthomosaic(surface_data=Metashape.ElevationData)
@@ -419,7 +419,7 @@ def image_footprints_from_project(project_file_path, points_per_side = 25):
     doc.open(project_file_path)
     chunk = doc.chunk
     T = chunk.transform.matrix
-    surface = chunk.dense_cloud
+    surface = chunk.point_cloud
     
     image_to_point_dictionary = {}
     for camera in chunk.cameras:
@@ -766,7 +766,7 @@ def update_metashape_cameras_after_transform(project_file,
 
     chunk.updateTransform()
 
-    chunk.dense_cloud.crs = chunk.crs
-    chunk.dense_cloud.transform = chunk.transform.matrix
+    chunk.point_cloud.crs = chunk.crs
+    chunk.point_cloud.transform = chunk.transform.matrix
     
     doc.save()

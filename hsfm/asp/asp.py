@@ -276,7 +276,6 @@ def point2dem(point_cloud_file,
     
     if print_call==True:
         print(*call)
-        
     else:
         call = ' '.join(call)
         hsfm.utils.run_command(call, verbose=verbose, shell=True)

@@ -1,4 +1,4 @@
-name: hsfm_x86_64
+name: hsfmx86
 channels:
   - conda-forge
 dependencies:
@@ -249,26 +249,3 @@ dependencies:
   - zipp=3.1.0=py_0
   - zlib=1.2.11=h0b31af3_1006
   - zstd=1.4.4=hed8d7c8_2
-  - pip:
-    - "--editable=git+https://github.com/dshean/pygeotools.git#egg=pygeotools"
-    - "--editable=git+https://github.com/dshean/demcoreg.git#egg=demcoreg"
-    - "--editable=git+https://github.com/dshean/imview.git#egg=imview"
-    - "--editable=git+https://github.com/friedrichknuth/bare.git#egg=bare"
-    - "--editable=git+https://github.com/friedrichknuth/driveanon.git#egg=driveanon"
-    - appdirs==1.4.3
-    - click==6.7
-    - colorama==0.4.1
-    - cursor==1.3.4
-    - elevation==1.0.6
-    - fasteners==0.15
-    - future==0.17.1
-    - halo==0.0.28
-    - log-symbols==0.0.14
-    - matplotlib-colorbar==0.3.7
-    - matplotlib-scalebar==0.6.0
-    - monotonic==1.5
-    - salem==0.2.4
-    - spinners==0.0.23
-    - termcolor==1.1.0
-    - wget==3.2
-
